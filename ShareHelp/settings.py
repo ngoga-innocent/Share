@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'Home',
     'Payment',
     'ckeditor',
@@ -132,3 +134,16 @@ CKEDITOR_CONFIGS = {
 }
 STRIPE_PUBLIC_KEY = 'pk_test_51NcmE7KZe5wLkAMtkaZviVeKQPb6IpaTgUAbVqQmTD9ph7gmKGurN804CpMDXkfdShTAGYUnPkBEHDEOPfEgQNWI00tchkreyT'
 STRIPE_SECRET_KEY = 'sk_test_51NcmE7KZe5wLkAMtO1uYY4StLaVsxrjrIPqtHYx6pINnSBVYxNBlIQagenlgmA0ydQB1vm3H8rPe26qqB9aLBrNK00aQa5o8w9'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dz7v9gwzd',
+    'API_KEY': '782477351883355',
+    'API_SECRET': 'n03Zh44PD_N8aawgfpM4_aBImsw'
+}
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
