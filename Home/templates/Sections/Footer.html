@@ -1,0 +1,60 @@
+{% load static %}
+<section class="flex flex-col divide-y-2 divide-gray-200">
+  <!-- Upper Section -->
+  <div class="hidden md:flex flex-col md:flex-row justify-between items-start md:items-center p-4 w-[90vw] mx-auto space-y-6 md:space-y-0">
+    <!-- Contact Info -->
+    <div class="flex flex-col space-y-4">
+      <!-- Logo -->
+      <div class="w-20 h-20 rounded-full overflow-hidden">
+        <img
+          src="{% static 'img/logo.png' %}"
+          class="h-full w-full object-contain"
+          alt="Logo"
+        />
+      </div>
+      <!-- Address -->
+      <div>
+        <h3 class="font-bold text-gray-800">Address:</h3>
+        <p class="text-gray-600">Kigali, KN01, Nyarugenge</p>
+      </div>
+      <!-- Contact -->
+      <div>
+        <h3 class="font-bold text-gray-800">Contact:</h3>
+        <p class="text-gray-600">info@shareit.com</p>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="flex flex-col md:flex-row gap-x-10 space-y-6 md:space-y-0">
+      <!-- Column 1 -->
+      <ul class="space-y-2 text-gray-800">
+        <li><a href="#" class="hover:text-primary">Donate</a></li>
+        <li><a href="#" class="hover:text-primary">Get Involved</a></li>
+        <li><a href="#" class="hover:text-primary">Our Mission</a></li>
+        <li><a href="#" class="hover:text-primary">Volunteer Today</a></li>
+        <li><a href="#" class="hover:text-primary">Success Stories</a></li>
+      </ul>
+      <!-- Column 2 -->
+      <ul class="space-y-2 text-gray-800">
+        <li><a href="#" class="hover:text-primary">Contact Us</a></li>
+        <li><a href="#" class="hover:text-primary">Blog</a></li>
+        <li><a href="#" class="hover:text-primary">Support Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Lower Section -->
+  <div class="flex flex-col md:flex-row justify-between items-center py-6 w-[90vw] mx-auto space-y-4 md:space-y-0">
+    <!-- Copyright -->
+    <div>
+      <p class="text-sm font-bold text-gray-500">
+        &copy; 2025 Share. All Rights Reserved.
+      </p>
+    </div>
+    <!-- Policies -->
+    <div class="flex flex-row items-center gap-x-4">
+      <a href="#" class="underline text-gray-500 font-medium hover:text-primary text-sm">Privacy Policy</a>
+      <a href="#" class="underline text-gray-500 font-medium hover:text-primary text-sm">Terms and Conditions</a>
+    </div>
+  </div>
+</section>

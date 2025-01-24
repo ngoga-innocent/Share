@@ -1,0 +1,105 @@
+{% load static %}
+<div
+  class="carousel-container relative overflow-hidden w-full h-screen flex flex-col justify-center"
+>
+  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+  <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+    {% if carousels %} {% for item in carousels %}
+    <div
+      class="carousel-item flex-shrink-0 w-full h-screen relative"
+    >
+      <img
+        src="{{item.image.url}}"
+        alt="Hero Image"
+        class="object-cover w-full h-full"
+      />
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+  <div
+    class="absolute flex flex-col z-50 left-[5vw] sm:left-[10vw] text-accent"
+  >
+    <div
+      class="w-[80vw] sm:w-[60vw] md:w-[40vw] flex flex-col gap-y-4 md:gap-y-10"
+    >
+      <h1
+        class="text-xl sm:text-2xl md:text-4xl font-bold capitalize text-wrap"
+      >
+        Transform Lives: Donate to help children today
+      </h1>
+      <p class="text-sm sm:text-base md:text-lg text-white">
+        Your generosity can make a significant difference in the lives of
+        underprivileged children. Join us in our mission to provide them with
+        the support they need to thrive.
+      </p>
+    </div>
+    <div class="flex flex-row items-center gap-x-4 sm:gap-x-5 my-4 sm:my-6">
+      <a
+        href="{% url 'payment' %}"
+        class="flex flex-row items-center py-2 sm:py-3 px-5 sm:px-10 gap-x-2 rounded-full bg-red-700 hover:opacity-60 transition-all text-white"
+      >
+        Donate <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </a>
+      <a
+        href="{% url 'aboutus' %}"
+        class="flex flex-row items-center py-2 sm:py-3 px-5 sm:px-10 gap-x-2 rounded-full border border-red-600 hover:bg-red-700 hover:opacity-60 transition-all text-white"
+      >
+        Learn More
+        <i class="fa fa-arrow-right rotate-45" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const $carousel = $("#carousel");
+    const $items = $(".carousel-item");
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      $items.removeClass("focus");
+      $items.eq(currentIndex).addClass("focus");
+      const offset = -currentIndex * 100;
+      $carousel.css("transform", `translateX(${offset}%)`);
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % $items.length;
+      updateCarousel();
+    }
+
+    setInterval(nextSlide, 5000);
+    updateCarousel();
+  });
+</script>
+<style>
+    /* Enforce full height for carousel container */
+    .carousel-container {
+      height: 100vh; /* Full viewport height */
+      overflow: hidden; /* Prevent image overflow */
+    }
+  
+    /* Each carousel item takes full height */
+    .carousel-item {
+      height: 100%; /* Match parent height */
+    }
+  
+    /* Ensure all images adapt to their containers */
+    .carousel-item img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover; /* Ensures images fill the space without distortion */
+      object-position: center; /* Keeps the central focus of the image */
+    }
+  
+    /* Mobile adjustment for safe areas */
+    @media (max-width: 768px) {
+      .carousel-container {
+        height: calc(100vh - env(safe-area-inset-bottom));
+      }
+      .carousel-item {
+        height: calc(100vh - env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+  

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col w-full min-h-screen">
+{% include 'Sections/Navbar.html' %}
+    <!-- Payment Container -->
+    <div class="flex flex-col flex-1 items-center justify-center">
+        <div class="bg-white shadow-md rounded-lg w-full max-w-md p-6">
+            <h1 class="text-2xl font-semibold text-gray-800 mb-4">Make a Donation</h1>
+            <p class="text-gray-500 mb-6">Enter your card details to complete the Donation.</p>
+    
+            <!-- Payment Form -->
+            <form id="payment-form" class="space-y-4">
+                <!-- Card Element -->
+                <input type="number" required id="amount" name="amount" placeholder="amount to Donate" class="w-[100%] py-2 rounded-md px-3 border border-gray-300">
+                <div id="card-element" class="p-3 border border-gray-300 rounded-md bg-gray-50">
+                    
+                </div>
+                
+                <!-- Payment Message -->
+                <div id="payment-message" class="hidden text-sm text-red-600 mt-2"></div>
+    
+                <!-- Submit Button -->
+                <button id="submit-button" type="submit" 
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium">
+                    Pay Now
+                </button>
+            </form>
+        </div>
+    </div>
+{% include 'Sections/Footer.html' %}
+    <script>
+        const stripe = Stripe('{{ stripe_public_key }}');
+        const elements = stripe.elements();
+        const cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        const paymentForm = document.getElementById('payment-form');
+        const paymentMessage = document.getElementById('payment-message');
+
+        paymentForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const amountInput=document.getElementById('amount');
+            const amount = parseInt(amountInput.value);
+            if (isNaN(amount) || amount <= 0) {
+                paymentMessage.textContent = 'Please enter a valid amount.';
+                paymentMessage.classList.remove('hidden');
+                return;
+            }
+            const { client_secret } = await fetch('/payment/create-payment-intent/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ "amount":amount }),
+            }).then((r) => r.json());
+
+            const { error, paymentIntent } = await stripe.confirmCardPayment(client_secret, {
+                payment_method: { card: cardElement },
+            });
+
+            if (error) {
+                paymentMessage.textContent = error.message;
+                paymentMessage.classList.remove('hidden');
+            } else if (paymentIntent.status === 'succeeded') {
+                paymentMessage.textContent = 'Payment succeeded!';
+                paymentMessage.classList.remove('hidden');
+                paymentMessage.classList.remove('text-red-600');
+                paymentMessage.classList.add('text-green-600');
+            }
+        });
+    </script>
+
+</body>
+</html>

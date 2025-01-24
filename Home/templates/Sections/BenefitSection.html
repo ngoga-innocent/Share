@@ -1,0 +1,40 @@
+{% load static %}
+<section class="flex flex-col md:flex-row items-center w-[90vw] md:w-[70vw] mx-auto py-8">
+  <!-- Text Content -->
+  <div class="w-full md:w-[50%] px-4 flex flex-col">
+    <h1 class="text-xl md:text-3xl font-bold my-2 text-center md:text-left">
+      Transform Lives: The Impact of Your Generosity on Children in Need
+    </h1>
+    <p class="text-sm md:text-base mt-4 text-center md:text-left">
+      Your donation can create lasting change for underprivileged children,
+      providing them with essential resources and opportunities. Plus, your
+      generosity may qualify for tax deductions, making it a win-win for you
+      and the community.
+    </p>
+
+    <!-- Impact and Hope Section -->
+    <div class="flex flex-col md:flex-row justify-between my-7 gap-y-6 md:gap-y-0">
+      <div class="flex-1 text-center md:text-left">
+        <h2 class="text-lg md:text-xl font-semibold">Impact</h2>
+        <p class="text-sm md:text-base">
+          Support local initiatives and uplift your community.
+        </p>
+      </div>
+      <div class="flex-1 text-center md:text-left">
+        <h2 class="text-lg md:text-xl font-semibold">Hope</h2>
+        <p class="text-sm md:text-base">
+          Together, we can build a brighter future.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Section -->
+  <div class="w-full md:w-[50%] mt-6 md:mt-0">
+    <img
+      src="{% static 'img/happy_children.jpg' %}"
+      class="w-full h-full max-h-[300px] md:max-h-[500px] object-cover rounded-md"
+      alt="Happy Children"
+    />
+  </div>
+</section>

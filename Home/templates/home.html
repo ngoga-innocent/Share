@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block Title %}Home{% endblock Title %}
+{% block Content %}
+{% include './Sections/HeroSection.html' %}
+<section>
+    {% include './Sections/AboutSection.html' %} 
+</section>
+<section>
+    {% include './Sections/BenefitSection.html' %}
+</section>
+<section>
+    {% include './Sections/UnderstandingSteps.html' %}
+</section>
+<section>
+    {% include './Sections/Blog.html' %}
+</section>
+<section>
+    {% include './Sections/MakeDifference.html' %}
+</section> 
+<section>
+    {% include './Sections/Footer.html' %}
+</section> 
+{% endblock Content %}

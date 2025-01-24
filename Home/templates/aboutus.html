@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block Title %}About{% endblock Title %}
+{% block Content %}
+<section>
+    {% include './Sections/AboutusSection/CTA.html' %}
+</section>
+<section id="mission">
+    {% include './Sections/AboutusSection/Mission.html' %}
+</section>
+<section id="SharingValue">
+    {% include './Sections/AboutusSection/WhatWeDo.html' %}
+</section>
+
+<section id="history">
+    {% include './Sections/AboutusSection/History.html' %}
+</section> 
+<section>
+    {% include './Sections/MakeDifference.html' %}
+</section> 
+<section>
+    {% include './Sections/Footer.html' %}
+</section> 
+{% endblock Content %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% block Content %}
+<div class="bg-gray-100 text-gray-100 min-h-screen">
+  <!-- Hero Section -->
+  <div
+    class="relative bg-gradient-to-r from-blue-800 to-purple-600 text-center py-20 px-4"
+  >
+    <div class="container mx-auto">
+      <h1 class="text-6xl font-extrabold text-white mb-6 animate-fade-in">
+        Welcome to Our Blog
+      </h1>
+      <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-10 animate-slide-up">
+        Discover the latest stories, insights, and trends in technology and
+        innovation.
+      </p>
+      <a
+        href="#featured"
+        class="px-8 py-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600 transition duration-300"
+      >
+        Explore Now
+      </a>
+    </div>
+  </div>
+
+  <!-- Featured Blogs Section -->
+  <div id="featured" class="py-16">
+    <div class="container mx-auto px-4">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Featured Blog 1 -->
+        {% if featured %}
+            {% for featured_blog in featured %}
+            <a href="/blogs/{{ featured_blog.slug}}"
+            class="relative bg-gray-800 shadow-lg rounded-lg overflow-hidden group transform transition duration-300 hover:scale-105"
+          >
+          <div class="w-full h-full bg-black absolute inset-0 bg-opacity-60"></div>
+            <img
+              src="{{featured_blog.image.url}}"
+              alt="Featured Blog"
+              class="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
+            />
+            <div class="p-6 absolute top-0 ">
+              <h3
+                class="text-sm font-semibold mb-3 group-hover:text-accent text-white transition duration-300"
+              >
+                {{featured_blog}}
+              </h3>
+              
+              
+            </div>
+          </a>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Featured Blog 2 -->
+       
+  </div>
+
+  <!-- Other Blogs Section -->
+  <div class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blog Card -->
+        {% if blogs %} {% for blog in blogs %}
+        <div
+          class="bg-gray-800 shadow-lg rounded-lg overflow-hidden group transform transition duration-300 flex flex-col hover:scale-105"
+        >
+          <img
+            src="{{blog.image.url}}"
+            alt="Blog Post Image"
+            class="w-full h-48 object-cover group-hover:scale-110 transition duration-500"
+          />
+          <div class="p-6">
+            <h3
+              class="text-2xl font-semibold mb-3 group-hover:text-blue-500 transition duration-300"
+            >
+              {{blog.title}}
+            </h3>
+            <div class="flex space-x-2 mt-2">
+                {% for tag in blog.tags %}
+                <span class="text-xs text-gray-600 bg-gray-200 px-2 py-1 rounded-full border border-gray-300">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <p class="text-gray-400 mb-4">
+              {% with blog.description|striptags as plain_text %} 
+              {% with plain_text|slice:":500" as truncated_text %} {{ truncated_text |safe }}{% if plain_text|length > 500 %}...{% endif %} {% endwith %} 
+              {% endwith %}
+            </p>
+            <a href="/blogs/{{blog.slug}}" class="text-blue-500 font-medium hover:underline">
+              Read More →
+            </a>
+          </div>
+        </div>
+        {% endfor %} {% endif %}
+
+        <!-- Repeat Blog Card -->
+      </div>
+    </div>
+  </div>
+</div>
+{% include './Sections/Footer.html' %}
+{% endblock Content %}

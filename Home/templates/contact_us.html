@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block Content %}
+
+<div class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+        <!-- Page Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">Contact Us</h1>
+            <p class="text-lg text-gray-600 mt-4">
+                We'd love to hear from you! Whether you have a question, feedback, or want to get involved, feel free to reach out.
+            </p>
+        </div>
+
+        <!-- Contact Details & Form -->
+        <div class="flex flex-wrap -mx-4">
+            <!-- Contact Details -->
+            <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+                <ul class="text-gray-700 space-y-4">
+                    <li class="flex items-start">
+                        <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89-3.11c.44-.18.95-.18 1.39 0L21 8m-9 6v10M3 21l9-4m0 0l9 4M3 21V10m18 11V10m0 0l-9-4" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-lg font-medium">Address</h3>
+                            <p>123 Non-Profit Street, City, Country</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18m-9 4h9m-9 4h9m-9 4h9m-9-12h9m-9-4h9" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-lg font-medium">Email</h3>
+                            <p><a href="mailto:contact@nonprofit.org" class="text-accent">contact@nonprofit.org</a></p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h.01M21 8h-8a1 1 0 01-1-1V3m-2 14h-.01M3 16h8a1 1 0 001 1v4m-6-6a9 9 0 019 9m0-9a9 9 0 019 9" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-lg font-medium">Phone</h3>
+                            <p>+123-456-7890</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="w-full lg:w-1/2 px-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Name" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Email" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Google Map Section -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Visit Us</h2>
+            <div class="w-full h-80 bg-gray-300 rounded-lg overflow-hidden">
+                <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509434!2d144.9537353153189!3d-37.817209979751554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5773aa999e869ec!2sVictoria%20State%20Library!5e0!3m2!1sen!2sus!4v1617696987258!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<section>
+    {% include 'Sections/Footer.html' %}
+</section>
+{% endblock Content %}
