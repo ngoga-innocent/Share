@@ -1,6 +1,24 @@
-<section class="make_difference min-h-[40vh] h-[60vh] flex flex-col justify-center ">
+{% load static %}
+<section class="make_difference min-h-[40vh] h-[60vh] flex flex-col justify-center h-screen">
     <div class="text-white w-[80vw] mx-auto gap-y-6 flex flex-col items-center text-center">
-        <h1 class="text-6xl ">Make a Difference Today</h1>
-    <p class="text-xl">Your Generosity can change a child's life.Join us in making a lasting Impact</p>
+        <h1 class="text-6xl donating1 ">Make a Difference Today</h1>
+        <p class=" max-w-[40vw] text-wrap w-[40vw] mx-auto">Your Generosity can change a child's life.Join us in making a lasting Impact</p>
     </div>
 </section>
+<style>
+    .make_difference{
+        background-image:  linear-gradient(to right, rgba(136, 44, 121,0) 0%, rgba(76, 48, 202, 0.7) 70%,rgba(136, 44, 121,0.9) 90%),url({% static 'img/family.PNG' %});
+        /* background-color: rgba(0, 0, 0, 0.3); */
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .donating1{
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.6)); /* Gradient colors */
+      -webkit-background-clip: text; /* This clips the background to the text */
+      color: transparent; /* Makes text color transparent to show gradient */
+      opacity: 1;
+      
+     
+      
+      }
+</style>

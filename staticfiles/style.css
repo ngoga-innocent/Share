@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
 *{
     color:'#333333'
 }
@@ -80,22 +80,47 @@ body {
     transform: scale(1.2); /* Zoom in the focused item */
     opacity: 1; /* Highlight focused item */
 }
-.steps {
-    background-image: linear-gradient( rgba(0, 176, 255,0.4), rgba(255, 64, 129,0.7)), url('./img/bg_help.jpg');
-    /* background-color: rgba(0, 0, 0, 0.3); */
-    background-size: cover;
-    background-attachment: fixed;
-   
-}
-.make_difference{
-    background-image: linear-gradient( rgba(0, 176, 255,0.4), rgba(255, 64, 129,0.7)), url('./img/make_difference.jpeg');
-    /* background-color: rgba(0, 0, 0, 0.3); */
-    background-size: cover;
-    background-attachment: fixed;
-}
+/* Mobile adjustment for safe areas */
+@media (max-width: 768px) {
+    .carousel-container {
+      height: calc(100vh - env(safe-area-inset-bottom));
+    }
+    .carousel-item {
+      height: calc(100vh - env(safe-area-inset-bottom));
+    }
+  }
+
 .cta_about{
-    background-image: linear-gradient( rgba(0, 176, 255,0.4), rgba(255, 64, 129,0.7)), url('./img/Mission.jpg');
+    background-image: linear-gradient( rgba(0, 176, 255,0.4), rgba(255, 64, 129,0.7)), url('./img/share3.png');
     /* background-color: rgba(0, 0, 0, 0.3); */
     background-size: cover;
     background-attachment: fixed;
 }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .typing-container {
+    max-width: 80%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "Merienda", cursive;
+  }
+
+  .typing-effect::after {
+    content: "|"; /* Blinking cursor */
+    animation: blink 0.7s infinite;
+    font-family: "Merienda", cursive;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }

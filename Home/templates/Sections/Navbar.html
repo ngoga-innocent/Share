@@ -1,9 +1,9 @@
 {% load static %}
-<div style="z-index: 10000;" class="z-50 flex flex-row bg-gray-100 justify-between items-center md:px-10 px-3">
+<div style="z-index: 10000;" id="navbar" class="z-50 flex flex-row bg-gray-100 justify-between items-center md:px-10 px-3">
     <!-- Logo Section -->
     <div>
         <a href="{% url 'homepage' %}">
-            <img src="{% static 'img/logo.png' %}" alt="Tresinfra" class="h-20 w-20">
+            <img src="{% static 'img/logo.png' %}" alt="Tresinfra" style="width: 7rem;height: 7rem;">
         </a>
     </div>
 
@@ -64,3 +64,49 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const navbar = document.getElementById("navbar"); // Ensure navbar has the correct ID
+    
+        window.addEventListener("scroll", function () {
+            //console.log(window.scrollY);
+    
+            if (window.scrollY > 800) {
+                navbar.classList.add("scrolled-navbar1"); // Green
+                navbar.classList.remove("scrolled-navbar2", "scrolled-navbar3", "scrolled-navbar");
+            } else if (window.scrollY > 500) {
+                navbar.classList.add("scrolled-navbar2"); // Yellow
+                navbar.classList.remove("scrolled-navbar1", "scrolled-navbar3", "scrolled-navbar");
+            } else if (window.scrollY > 300) {
+                navbar.classList.add("scrolled-navbar3"); // Blue
+                navbar.classList.remove("scrolled-navbar1", "scrolled-navbar2", "scrolled-navbar");
+            } 
+            else {
+                navbar.classList.remove("scrolled-navbar", "scrolled-navbar1", "scrolled-navbar2", "scrolled-navbar3");
+            }
+        });
+    });
+    
+</script>
+
+<style>
+    
+    .scrolled-navbar3 {
+        background-color:rgba(24, 119, 242,0.5) !important; /* Change to your desired color */
+       
+        transition: background-color 2s ease-in-out;
+        
+    }
+    .scrolled-navbar2 {
+        background-color:rgba(76, 48, 202, 0.7) !important; /* Change to your desired color */
+      
+        transition: background-color 2s ease-in-out;
+    }
+    .scrolled-navbar1 {
+        background-color:rgba(136, 44, 121,0.9) !important; /* Change to your desired color */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 2s ease-in-out;
+    }
+    
+</style>
+

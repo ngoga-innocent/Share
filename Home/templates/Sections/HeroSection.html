@@ -1,13 +1,12 @@
 {% load static %}
+
 <div
   class="carousel-container relative overflow-hidden w-full h-screen flex flex-col justify-center"
 >
   <div class="absolute inset-0 bg-black bg-opacity-60"></div>
   <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
     {% if carousels %} {% for item in carousels %}
-    <div
-      class="carousel-item flex-shrink-0 w-full h-screen relative"
-    >
+    <div class="carousel-item flex-shrink-0 w-full h-screen relative">
       <img
         src="{{item.image.url}}"
         alt="Hero Image"
@@ -25,20 +24,18 @@
       <h1
         class="text-xl sm:text-2xl md:text-4xl font-bold capitalize text-wrap"
       >
-        Transform Lives: Donate to help children today
+        Transform Lives:Share to help children today
       </h1>
-      <p class="text-sm sm:text-base md:text-lg text-white">
-        Your generosity can make a significant difference in the lives of
-        underprivileged children. Join us in our mission to provide them with
-        the support they need to thrive.
-      </p>
+      <div class="typing-container">
+        <p id="typingText" class="typing-effect opacity-80"></p>
+      </div>
     </div>
     <div class="flex flex-row items-center gap-x-4 sm:gap-x-5 my-4 sm:my-6">
       <a
         href="{% url 'payment' %}"
         class="flex flex-row items-center py-2 sm:py-3 px-5 sm:px-10 gap-x-2 rounded-full bg-red-700 hover:opacity-60 transition-all text-white"
       >
-        Donate <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        Share <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </a>
       <a
         href="{% url 'aboutus' %}"
@@ -72,34 +69,44 @@
     updateCarousel();
   });
 </script>
+<script>
+  const text = "We don’t view our efforts as acts of generosity or charity; rather, we embrace the power of sharing. We believe every individual has something valuable to contribute. Through this exchange, not only do we give, but we also receive in profound ways. Join us in our mission to provide the support and resources that empower others to thrive and reach their fullest potential.";
+  let i = 0;
+  function typeEffect() {
+    if (i < text.length) {
+      document.getElementById("typingText").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeEffect, 20); // Adjust speed here
+    }
+  }
+  typeEffect();
+</script>
 <style>
-    /* Enforce full height for carousel container */
-    .carousel-container {
-      height: 100vh; /* Full viewport height */
-      overflow: hidden; /* Prevent image overflow */
-    }
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Merienda:wght@300..900&family=Reenie+Beanie&display=swap');
+  /* Enforce full height for carousel container */
+  .carousel-container {
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent image overflow */
+  }
+
+  /* Each carousel item takes full height */
+  .carousel-item {
+    height: 100%; /* Match parent height */
+  }
+
+  /* Ensure all images adapt to their containers */
+  .carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    object-position: center; /* Keeps the central focus of the image */
+  }
+  .typing-effect{
+    font-family: "Courier Prime", monospace,Arial, sans-serif;
+    color:#e6dfdf;
+    opacity:0.7;
+    font-size: medium;
+    
+  }
   
-    /* Each carousel item takes full height */
-    .carousel-item {
-      height: 100%; /* Match parent height */
-    }
-  
-    /* Ensure all images adapt to their containers */
-    .carousel-item img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover; /* Ensures images fill the space without distortion */
-      object-position: center; /* Keeps the central focus of the image */
-    }
-  
-    /* Mobile adjustment for safe areas */
-    @media (max-width: 768px) {
-      .carousel-container {
-        height: calc(100vh - env(safe-area-inset-bottom));
-      }
-      .carousel-item {
-        height: calc(100vh - env(safe-area-inset-bottom));
-      }
-    }
-  </style>
-  
+</style>

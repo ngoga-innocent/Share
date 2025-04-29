@@ -1,15 +1,30 @@
 {% load static %}
 <section class="flex flex-col items-center py-14 px-4">
   <h1 class="text-2xl md:text-4xl font-bold text-center">Our Impact</h1>
-  <p class="text-base md:text-lg w-full md:w-[70%] text-center my-4">
-    With your support, we’ve been able to provide meals, school supplies,
-    healthcare, and shelter to thousands of children in need. See how your
-    contributions are changing lives.
+  <p class="text-base md:text-md w-full md:w-[70%] text-center my-4">
+    Our vision is to foster a community where every child feels valued,
+    respected, and empowered to reach their fullest potential. Our program is
+    designed to support the positive growth and development of children from
+    underserved families, providing them with the tools they need to thrive.<br> <br> We
+    are committed to a holistic approach that nurtures each child's social,
+    physical, emotional, and intellectual growth. Recognizing the uniqueness of
+    every child, we understand that positive early childhood experiences play a
+    crucial role in shaping a child's future development. Our program will
+    provide a safe and supportive environment, offering children opportunities
+    to flourish through meaningful role modeling and guidance. Through this
+    approach, we aim to ensure that all children are equipped to succeed, now
+    and in the future.
   </p>
-  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:w-[80vw] mx-auto my-6 py-6">
+  <div
+    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:w-[80vw] mx-auto my-6 py-6"
+  >
     <!-- Card 1 -->
-    <div class="flex flex-col gap-y-3 border border-primary-light px-4 py-6 rounded-lg shadow-lg">
-      <div class="rounded-full h-16 w-16 border border-gray-200 flex items-center justify-center overflow-hidden mx-auto">
+    <div
+      class="flex flex-col gap-y-3 border border-primary-light px-4 py-6 rounded-lg shadow-lg"
+    >
+      <div
+        class="rounded-full h-16 w-16 border border-gray-200 flex items-center justify-center overflow-hidden mx-auto"
+      >
         <img
           src="{% static 'img/how_works.webp' %}"
           class="w-full h-full object-cover"
@@ -21,7 +36,9 @@
         Each and every donation directly impacts children's education, health,
         and overall well-being.
       </p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
+      <div
+        class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4"
+      >
         <a
           href="{% url 'payment' %}"
           class="border py-2 px-6 rounded-md bg-red-600 text-white hover:bg-red-700 transition duration-300"
@@ -38,8 +55,12 @@
     </div>
 
     <!-- Card 2 -->
-    <div class="flex flex-col gap-y-3 border border-primary-light px-4 py-6 rounded-lg shadow-lg">
-      <div class="rounded-full h-16 w-16 border border-gray-200 flex items-center justify-center overflow-hidden mx-auto">
+    <div
+      class="flex flex-col gap-y-3 border border-primary-light px-4 py-6 rounded-lg shadow-lg"
+    >
+      <div
+        class="rounded-full h-16 w-16 border border-gray-200 flex items-center justify-center overflow-hidden mx-auto"
+      >
         <img
           src="{% static 'img/donation_security.webp' %}"
           class="w-full h-full object-cover"
@@ -63,8 +84,12 @@
     </div>
 
     <!-- Card 3 -->
-    <div class="flex flex-col gap-y-3 border border-primary-light px-4 py-6 rounded-lg shadow-lg">
-      <div class="rounded-full h-16 w-16 border border-gray-200 flex items-center justify-center overflow-hidden mx-auto">
+    <div
+      class="flex flex-col gap-y-3 border border-primary-light px-4 py-6 rounded-lg shadow-lg"
+    >
+      <div
+        class="rounded-full h-16 w-16 border border-gray-200 flex items-center justify-center overflow-hidden mx-auto"
+      >
         <img
           src="{% static 'img/transparency.jpeg' %}"
           class="w-full h-full object-cover"
@@ -88,3 +113,15 @@
     </div>
   </div>
 </section>
+<style>
+  .donating {
+    background-image: linear-gradient(
+      to top,
+      rgb(12, 11, 11),
+      rgba(255, 255, 255, 0.6)
+    ); /* Gradient colors */
+    -webkit-background-clip: text; /* This clips the background to the text */
+    color: transparent; /* Makes text color transparent to show gradient */
+    opacity: 1;
+  }
+</style>
