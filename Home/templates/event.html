@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% block Title %}Events{% endblock Title %} {% block Content %}
+<div class="flex flex-col items-center w-full bg-white">
+  <div
+    style=""
+    class="bg-[url('/../../statics/img/event_bg.jpg')] h-[60vh] w-[100%] bg-center flex flex-col items-center justify-center"
+  >
+    <h1
+      class="text-5xl z-10"
+      style="
+        color: transparent;
+        -webkit-text-stroke: 2px white;
+        text-stroke: 2px white;
+      "
+    >
+      Event schedules
+    </h1>
+  </div>
+  <div class="flex flex-col items-start py-5 w-[80%] mx-auto">
+    <div class="flex flex-row items-center gap-x-3">
+        <button id="btnUpcoming" class="rounded-full border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-300">Upcoming Events</button>
+        <button id="btnPast" class="rounded-full border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-300">Past Events</button>
+    </div>
+    <div id="upcomingEvents" class="flex flex-col upcoming_events py-3">
+        {% if upcoming_events %}
+        {% for event in upcoming_events %}
+            <div class="flex flex-1 flex-row my-2 hover:bg-zinc-100 bg-white rounded-2xl py-3 items-center border border-gray-200 px-2">
+                <img src="{{event.thumbnail.url}}" class="w-[16vw] h-[16vh] rounded-md" alt="">
+                <div class="flex flex-col gap-y-1 mx-2 flex-1">
+                    <div class="border border-gray-200 bg-gray-200 rounded-full px-2 py-2 text-sm text-gray-700 w-fit">{{event.date}}</div>
+                    <h4 class="font-light">{{event.title}}</h4>
+                    <p class="text-ellipsis overflow-hidden line-clamp-2 text-sm " >{{event.description|striptags|truncatewords:40}}</p>
+                </div>
+                <div class="flex flex-col  ">
+                    <a href="{% url 'event' event.slug %}" class="bg-black rounded-full text-white px-3 py-2  text-sm"> see Details</a>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>No Upcoming Event</p>
+        {% endif %}
+        
+    </div>
+    <div id="pastEvents" class="flex flex-col upcoming_events py-3 ">
+        {% if past_events %}
+        {% for event in past_events %}
+            <div class="flex flex-1 flex-row my-2 hover:bg-zinc-100 bg-white rounded-2xl py-3 items-center border border-gray-200 px-2">
+                <img src="{{event.thumbnail.url}}" class="w-[16vw] h-[16vh] rounded-md" alt="">
+                <div class="flex flex-col gap-y-1 mx-2 flex-1">
+                    <div class="border border-gray-200 bg-gray-200 rounded-full px-2 py-2 text-sm text-gray-700 w-fit">{{event.date}}</div>
+                    <h4 class="font-light">{{event.title}}</h4>
+                    <p class="text-ellipsis overflow-hidden line-clamp-2 text-sm " >{{event.description|striptags|truncatewords:40}}</p>
+                </div>
+                <div class="flex flex-col  ">
+                    <a href="{% url 'event' event.slug %}" class="bg-black rounded-full text-white px-3 py-2  text-sm"> see Details</a>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>No Event Yet Prepared before</p>
+        {% endif %}
+        
+    </div>
+  </div>
+</div>
+<section>
+    {% include './Sections/MakeDifference.html' %}
+</section> 
+<section>
+    {% include 'Sections/Footer.html' %}
+</section>
+{% endblock Content %}
+{% block Script %}
+<script>
+    const btnUpcoming = document.getElementById('btnUpcoming');
+    const btnPast = document.getElementById('btnPast');
+    const upcomingSection = document.getElementById('upcomingEvents');
+    const pastSection = document.getElementById('pastEvents');
+  
+    btnUpcoming.addEventListener('click', () => {
+      upcomingSection.classList.remove('hidden');
+      pastSection.classList.add('hidden');
+      btnUpcoming.classList.add('bg-black', 'text-white');
+      btnPast.classList.remove('bg-black', 'text-white');
+    });
+  
+    btnPast.addEventListener('click', () => {
+      upcomingSection.classList.add('hidden');
+      pastSection.classList.remove('hidden');
+      btnPast.classList.add('bg-black', 'text-white');
+      btnUpcoming.classList.remove('bg-black', 'text-white');
+    });
+  </script>
+  
+{% endblock Script %}

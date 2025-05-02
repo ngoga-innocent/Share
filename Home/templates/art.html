@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% block Content %}
+<div class="flex flex-col">
+  <div
+    class="flex flex-col md:flex-row w-[90%] h-[40vh] gap-x-5 mx-auto items-center justify-between"
+  >
+    <div class="flex flex-col flex-1">
+      <p class="text-[#141414] font-semibold text-6xl">Drive into</p>
+      <h1 class="text-[#141414] text-6xl ml-12">Creativity with Our</h1>
+      <h1
+        style="font-family: 'Lavishly Yours', cursive"
+        class="text-[#EF9F3E] text-6xl self-end -mt-8"
+      >
+        gallery Collection
+      </h1>
+    </div>
+    <div class="flex flex-col flex-1 gap-y-8">
+      <p>
+        Explore our curated gallery collection,featuring captivating works from
+        our community artists,and immense yourself in upcoming exhibitions and
+        events that celebrate creativity and expressions
+      </p>
+
+      <button class="bg-[#EF9F3E] text-white font-bold rounded-full px-5 py-2 w-fit">Explore Collection</button>
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="text-xl font-bold text-center md:text-4xl">Featured Arts</h1>
+    <p style="font-family: 'Lavishly Yours', cursive">Gallery</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 w-[90%] gap-x-2 mx-auto py-12">
+    {% if featured_arts %}
+        {% for art in featured_arts %}
+        <div 
+            class="flex flex-col group h-[40vh] items-center 
+            {% if forloop.counter <= 2 %}
+                transform rotate-[2deg]
+            {% elif forloop.counter >= 4 %}
+                transform -rotate-[2deg]
+            {% elif forloop.counter == 3 %}
+                transform rotate-0 translate-y-10
+            {% endif %}">
+            
+            <div class="hidden group-hover:flex">
+                <p class="font-bold text-lg">{{ art.name }}</p>
+            </div>
+            
+            <img src="{{ art.image.url }}" 
+                class="h-[100%] w-[100%] group-hover:translate-y-4 transition duration-200 rounded-lg" 
+                alt="">
+        </div>
+    {% endfor %}
+
+    {% else %}
+        <p>No Arts Available</p>
+    {% endif %}
+  </div>
+  <div class="w-[80%] mx-auto flex flex-col md:flex-row h-[40vh] items-center gap-x-10 justify-center">
+    <div>
+        <h1 class="text-[#141414] text-3xl">About The</h1>
+        <p  style="font-family: 'Lavishly Yours', cursive"
+        class="text-[#EF9F3E] text-2xl self-end ">Gallery</p>
+    </div>
+    <div class="flex-1 flex flex-col">
+        <p class="font-bold text-[#141414] text-lg">Welcome to Share Gallery,where creativity Thrives.we showcase diverse collections from timeless classics to contemporary art,connecting audiene with the art Spirit through inspiring exhibitions.
+            <span class="text-[#141414]/50">Explore Our Gallery,discover our collections and join for upcoming events,workshop and artist talks.Experience the beauty and story that brings to life</span> </p>
+    </div>
+  </div>
+  <div class="flex flex-row w-[80%] flex-1 mx-auto items-center gap-x-2">
+    <div class="h-[1px] flex-1 bg-gray-500 rounded-lg"></div>
+    <div class="h-[1rem] w-[1rem] rounded-full  bg-[#EF9F3E]"></div>
+    <div class="h-[1px] flex-1 bg-gray-500 rounded-lg"></div>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="text-3xl font-bold">Our Gallery</h1>
+    <p  style="font-family: 'Lavishly Yours', cursive"
+        class="text-[#EF9F3E] text-2xl">Gallery</p>
+  </div>
+  <div class="w-[90%] py-5 mx-auto grid grid-cols-1 md:grid-cols-5 gap-2 auto-rows-auto grid-flow-dense">
+    {% if all_arts %}
+      {% for art in all_arts %}
+        <a href="{{ art.image.url }}"  target="_blank"
+           class="
+           rounded-lg overflow-hidden
+           {% if forloop.counter|divisibleby:9 %}
+             row-span-2 col-span-2
+           {% elif forloop.counter|divisibleby:5 %}
+             row-span-2 col-span-1
+           {% elif forloop.counter|divisibleby:3 %}
+             row-span-1 col-span-2
+           {% else %}
+             row-span-1 col-span-1
+           {% endif %}
+           ">
+          <img src="{{ art.image.url }}" alt="" class="w-full h-full object-cover">
+          <p class="text-black">{{art.name}}</p>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p>No Art Available</p>
+    {% endif %}
+  </div>
+</div>
+{% include './Sections/footer.html' %}
+{% endblock Content %}

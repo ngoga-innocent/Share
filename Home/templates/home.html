@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block Title %}Home{% endblock Title %}
 {% block Content %}
+<div class="w-full flex flex-row items-center justify-center bg-[url('../statics/img/kids.jpg')] bg-center relative">
+    <div class="absolute w-[100%] h-[200%] inset-0 bg-black/90"></div>
+    <img src="{% static 'img/logo.png' %}" style="width: 22rem;height: 22rem;" class="w-[12rem] h-[12rem] z-10" alt="">
+    <div class="z-10 text-white items-center flex flex-col">
+        <h1 style="
+        color: transparent;
+        -webkit-text-stroke: 2px white;
+        text-stroke: 2px white;
+      " class="text-xl md:text-[7rem] font-bold">Tubasange</h1>
+        <h1 style="font-family: 'Lavishly Yours', cursive" class=" text-xl md:text-5xl  text-[#EF9F3E] ">Share Urumuri</h1>
+    </div>
+</div>
 {% include './Sections/HeroSection.html' %}
 <section>
     {% include './Sections/AboutSection.html' %} 

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block Content %}
+<div class="flex flex-col ">
+    <div
+    style=""
+    class="bg-[url('/../../statics/img/event_bg.jpg')] h-[60vh] w-[100%] bg-center bg-fixed flex flex-col items-center justify-center"
+  >
+    <h1
+      class="text-5xl z-10"
+      style="
+        color: transparent;
+        -webkit-text-stroke: 2px white;
+        text-stroke: 2px white;
+      "
+    >
+      {{event.title}}
+    </h1>
+    <p class="text-white font-semibold">{{ event.date|date:"F j, Y" }}</p>
+
+  </div>
+ 
+    <div class="flex flex-col w-[80%] mx-auto py-5">
+        <div class="flex flex-col items-center py-4 ">
+            <h1 class="text-[#043220] font-bold">{{event.title}}</h1>
+            
+            <p>{{event.description |safe}}</p>
+            
+        </div>
+        <h1 class="text-xl md:text-4xl">Speakers</h1>
+        <p style="font-family: 'Lavishly Yours', cursive" class="text-[#EF9F3E] text-4xl -mt-5">of the Event</p>
+        <div class="grid grid-cols-1 md:grid-cols-4 py-10">
+          {% for speaker in speakers %}
+            <div class="flex flex-col items-center shadow-sm z-10 bg-white rounded-md shadow-black">
+              <img src="{{speaker.image.url}}"  alt="{{speaker.name}}" class="w-[100%] h-[40vh]">
+              <div class="flex flex-col items-center py-3">
+                <h1>{{speaker.name}}</h1>
+              <p>{{speaker.bio | safe}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="mt-[8rem]">
+            <h1 class="font-bold text-xl md:text-4xl text-[#043220] my-4 md:mt-[2rem]">Event Schedule</h1>
+            <p style="font-family: 'Lavishly Yours', cursive"
+            class="text-[#EF9F3E] text-[4rem] -mt-12">of the Day</p>
+        </div>
+       {% if schedules %}
+       {% for schedule in schedules %}
+            <div class="flex flex-row items-center  w-[100%] border border-black my-1  rounded-md">
+                <div class="flex flex-col text-white items-center justify-center w-[30%] h-[100%] bg-purple-800/70 to-pink-400 rounded-lg">
+                    <h1>{{schedule.activity_name}}</h1>
+                    <p>{{ schedule.start_time|time:"g:i A" }} - {{ schedule.end_time|time:"g:i A" }}</p>
+
+                </div>
+                <div class="flex flex-col text-zinc-700 py-3  flex-1 px-2">
+                    <h1>{{schedule.description_title}}</h1>
+                    <p class="py-2 text-gray-600">{{schedule.description | safe}}</p>
+                    <p class="py-4 font-bold">{{schedule.location}}</p>
+                </div>
+            </div>
+       {% endfor %}
+       {% else %}
+       <p>No schedules Yet added for this event</p>
+       {% endif %}
+    </div>
+</div>
+<section>
+    {% include '../Sections/Footer.html' %}
+</section>
+{% endblock Content %}
