@@ -1,22 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Payment</title>
+    <title>Share Urumuri Donating....</title>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'jquery.js' %}"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}" />
 </head>
 <body class="bg-gray-100 flex flex-col w-full min-h-screen">
 {% include 'Sections/Navbar.html' %}
+    <section class="flex flex-col h-[80vh] w-screen bg-[url('../../statics/img/helping_hands.jpg')] bg-cover bg-fixed items-center justify-center bg-no-repeat bg-center">
+        <h1 style="
+        color: transparent;
+        -webkit-text-stroke: 2px white;
+        text-stroke: 2px white;
+      " class="text-2xl md:text-5xl w-[50vw] text-center py-4">The Slightest Share From you will mean a lot to them</h1>
+      <p class="text-gray-300">Helps Others by using share, a platform that is safe, transparend and trusted.</p>
+
+        <a href="#Payment" class="py-3 px-8 hover:opacity-70 transition-all duration-300 rounded-full bg-[#357EFC] text-white font-bold">Get Started</a>
+    </section>
     <!-- Payment Container -->
-    <div class="flex flex-col flex-1 items-center justify-center">
-        <div class="bg-white shadow-md rounded-lg w-full max-w-md p-6">
-            <h1 class="text-2xl font-semibold text-gray-800 mb-4">Make a Donation</h1>
-            <p class="text-gray-500 mb-6">Enter your card details to complete the Donation.</p>
+    <div id="Payment" class="flex flex-col md:flex-row flex-1 px-4 items-center gap-x-3 justify-center h-[80vh] w-[100%] py-4 mx-auto bg-[url('../../statics/img/babysitting.jpg')] bg-fixed">
+        <div class="h-[80vh] flex-1 flex flex-col items-center justify-center  rounded-lg  ">
+            <div class="bg-white/50 rounded-md py-3 px-2 w-[100%] md:py-9 shadow-lg z-10 shadow-black">
+                <h1 style="font-family: 'Lavishly Yours', cursive" class="py-3 text-3xl text-[#EF9F3E] font-bold">Empowering African Children Through Compassionate Support</h1>
+                <h5>Share Urumuri is committed to supporting Rwandan and African children who lack access to a quality life. <br> <br>
+
+                    By joining this cause, you are making a meaningful impact—helping to break the cycle of poverty and building a brighter future for these children. <br> <br>
+                    
+                    Your contribution will allow us to meet essential needs in underserved communities by providing vital resources, education, and support. <br> <br>
+                    
+                    <span class="font-bold">With your help, these children will have the opportunity to develop critical skills, gain valuable knowledge, and unlock their full potential.</span>
+                </h5>
+            </div>
+        </div>
+        <div class="bg-white/60 shadow-md shadow-black z-20 rounded-lg w-[40vw] flex-1 h-[53vh]  p-6">
+            <div id="top-loader" class="h-1 bg-blue-500 w-0 transition-all duration-500 ease-linear"></div>
+           <div class="w-[100%]">
+            <h1 class="text-2xl font-semibold text-gray-800 mb-4" style="font-family: 'Lavishly Yours', cursive">Share  Your Donation</h1>
+            <div class="flex flex-row items-center rounded-full border border-gray-400 my-2">
+                <button id="MobileBtn" class="py-2 w-[55%] bg-orange-500 flex flex-col items-center justify-center rounded-full ">Mobile Payment</button>
+                <button id="CardBtn" class="py-2 w-[55%]  scale-x-4 flex flex-col items-center justify-center rounded-full ">Card Payment</button>
+            </div>
     
             <!-- Payment Form -->
-            <form id="payment-form" class="space-y-4">
+            <form id="payment-form" class="space-y-4 transition-all duration-300 ease-in-out translate-x-[50vw] hidden">
                 <!-- Card Element -->
                 <input type="number" required id="amount" name="amount" placeholder="amount to Donate" class="w-[100%] py-2 rounded-md px-3 border border-gray-300">
                 <div id="card-element" class="p-3 border border-gray-300 rounded-md bg-gray-50">
@@ -24,7 +55,7 @@
                 </div>
                 
                 <!-- Payment Message -->
-                <div id="payment-message" class="hidden text-sm text-red-600 mt-2"></div>
+                <div id="payment-message" class=" text-sm text-red-600 mt-2 "></div>
     
                 <!-- Submit Button -->
                 <button id="submit-button" type="submit" 
@@ -32,6 +63,22 @@
                     Pay Now
                 </button>
             </form>
+            <form id="MomoPayment">
+                {% comment %} Momo Card elements {% endcomment %}
+                <div class="flex flex-col">
+                    <label class="text-sm font-bold text-gray-600" for="Amount">Amount</label>
+                    <input type="number" placeholder="Enter Amount in USD" name="momo_amount" class="w-[100%] py-2 rounded-md px-3 border border-gray-300">
+                </div>
+                <div class="flex flex-col my-2">
+                    <label class="text-sm font-bold text-gray-600" for="Amount">Phone Number</label>
+                    <input type="number" placeholder="Enter Phone Number " name="momo_phone" class="w-[100%] py-2 rounded-md px-3 border border-gray-300">
+                </div>
+                <button id="submit-momo-button" type="submit" 
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium">
+                    Pay Now
+                </button>
+            </form>
+           </div>
         </div>
     </div>
 {% include 'Sections/Footer.html' %}
@@ -74,6 +121,70 @@
             }
         });
     </script>
+    <script>
+        $(document).ready(()=>{
+            $('#MobileBtn').click(function(){
+                $('#CardBtn').removeClass('bg-orange-500');
+                $(this).addClass('bg-orange-500');
+                $('#payment-form').addClass('translate-x-[50vw] hidden').removeClass('translate-x-0');
+                $('#MomoPayment').addClass('translate-x-0').removeClass('translate-x-[50vw] hidden');
+                
+            })
+            $('#CardBtn').click(function(){
+                $('#MobileBtn').removeClass('bg-orange-500');
+                $(this).addClass('bg-orange-500');
+                $('#payment-form').addClass('translate-x-0').removeClass('translate-x-[50vw] hidden');
+                $('#MomoPayment').addClass('translate-x-[50vw] hidden').removeClass('translate-x-0')
+            })
+        })
+    </script>
+    {% comment %} Momo Payment Handle {% endcomment %}
 
+    <script>
+        $(document).ready(function () {
+          $('#submit-momo-button').click(function (e) {
+            e.preventDefault();
+            $('#top-loader').addClass('animate');
+            const amount = $('input[name="momo_amount"]').val();
+            const phone = $('input[name="momo_phone"]').val();
+            $.ajax({
+              url: '/payment/momo_payment',
+              method: 'POST',
+              headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+              },
+              contentType: 'application/json',
+              data: JSON.stringify({
+                amount: amount,
+                phone: phone,
+                method: 'mobile'
+              }),
+              success: function (response) {
+                alert(response.status);
+                $('#top-loader').removeClass('animate');
+              },
+              error: function () {
+                $('#top-loader').removeClass('animate');
+                alert('Something went wrong');
+
+              }
+            });
+          });
+        });
+      </script>
+      <style>
+        #top-loader.animate {
+            width: 100%;
+            animation: loading-line 1.2s infinite ease-in-out;
+        }
+    
+        @keyframes loading-line {
+            0% { width: 0; }
+            25% {width:25%;}
+            50% { width: 50%; }
+            75% {width: 75%;}
+            100% { width: 100%; }
+        }
+    </style>
 </body>
 </html>

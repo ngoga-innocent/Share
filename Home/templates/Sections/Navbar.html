@@ -71,7 +71,7 @@
                     <a href="{% url 'blog' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'blog' %} text-red-700 {% endif %}">Blogs</a>
                 </li>
                 <li>
-                    <a href="{% url 'payment' %}" class="bg-accent px-4 py-2 rounded-full text-white">Donate</a>
+                    <a href="{% url 'payment' %}" class="bg-accent px-4 py-2 rounded-full text-accent {% if request.resolver_match.url_name == 'payment' %}  bg-orange-600 {% else %} text-white {% endif %} ">Donate</a>
                 </li>
             </div>
         </ul>

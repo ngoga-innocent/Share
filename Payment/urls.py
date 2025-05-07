@@ -5,4 +5,5 @@ urlpatterns = [
    
     path('',payment_page,name='payment'),
     path('create-payment-intent/', views.create_payment_intent, name='create_payment_intent'),
+    path('momo_payment',views.MomoPayment.as_view(),name='momo_payment')
     ]

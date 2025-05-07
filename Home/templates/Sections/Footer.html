@@ -1,49 +1,62 @@
 {% load static %}
-<section class="flex flex-col divide-y-2 divide-gray-200 bg-[#1E1C4E] text-white">
+<section class="flex flex-col divide-y-2 divide-gray-200 bg-[#1E1C4E]/30 text-white gap-y-5 md:h-[60vh] bg-cover" style="background-image: url('../../../statics/img/footer_bg.svg');">
   <!-- Upper Section -->
-  <div class="hidden md:flex flex-col md:flex-row justify-between items-start md:items-center p-4 w-[90vw] mx-auto space-y-6 md:space-y-0">
+  <div class="hidden md:flex flex-col md:flex-row  py-3 md:py-12 flex-1 items-start md:items-center p-4 w-[90vw] mx-auto space-y-6 md:space-y-0">
     <!-- Contact Info -->
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col items-center">
       <!-- Logo -->
       <div class="w-20 h-20 rounded-full overflow-hidden">
         <img
           src="{% static 'img/logo.png' %}"
-          class="h-full w-full object-contain"
+          class="h-[100%] w-[100%]"
           alt="Logo"
         />
       </div>
+      <h1 style="font-family: 'Lavishly Yours', cursive" class="text-4xl">Share Urumuri</h1>
       <!-- Address -->
-      <div>
-        <h3 class="font-bold text-white">Address:</h3>
-        <p class="ttext-white">Kigali/Rwanda </p>
-      </div>
-      <!-- Contact -->
-      <div>
-        <h3 class="font-bold text-white">Contact:</h3>
-        <p class="text-white">surumuri1@gmail.com</p>
-      </div>
-      <div>
-        <h3 class="font-bold text-white">Phone Number:</h3>
-        <p class="text-white">+250785122177</p>
+      <div class="hidden">
+        <div>
+          <h3 class="font-bold text-white">Address:</h3>
+          <p class="ttext-white">Kigali/Rwanda </p>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h3 class="font-bold text-white">Contact:</h3>
+          <p class="text-white">surumuri1@gmail.com</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-white">Phone Number:</h3>
+          <p class="text-white">+250785122177</p>
+        </div>
       </div>
     </div>
 
     <!-- Links -->
-    <div class="flex flex-col md:flex-row gap-x-10 space-y-6 md:space-y-0">
-      <!-- Column 1 -->
-      <ul class="space-y-2 text-white">
-        <li><a href="#" class="hover:text-primary text-white">Donate</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Get Involved</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Our Mission</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Volunteer Today</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Success Stories</a></li>
-      </ul>
-      <!-- Column 2 -->
-      <ul class="space-y-2 text-white">
-        <li><a href="#" class="hover:text-primary text-white">Contact Us</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Blog</a></li>
-        <li><a href="#" class="hover:text-primary text-white">Support Us</a></li>
-      </ul>
+    <div class="flex flex-1 flex-col items-center">
+      <h1 class="text-xl md:text-3xl" style="font-family: 'Lavishly Yours', cursive">Quick links</h1>
+      <div class="w-[70%] flex flex-col items-end mx-auto md:flex-row justify-between gap-x-10 space-y-6 py-4 md:space-y-0">
+        <!-- Column 1 -->
+        <ul class="space-y-2 text-white flex-1 justify-between flex flex-row">
+          <div>
+            <li><a href="{% url 'payment' %}" class="hover:text-primary text-white">Donate</a></li>
+            <li><a href="#" class="hover:text-primary text-white">Get Involved</a></li>
+          </div>
+         <div>
+            <li><a href="{% url 'arts' %}" class="hover:text-primary text-white">Our Arts</a></li>
+            <li><a href="{% url 'events' %}" class="hover:text-primary text-white">Events</a></li>
+         </div>
+          <div>
+            <li><a href="{% url 'blog' %}" class="hover:text-primary text-white">Success Stories</a></li>
+            <li><a href="{% url 'contactus' %}" class="hover:text-primary text-white">Contact Us</a></li>
+          </div>
+        
+          
+          <div>
+            <li><a href="#" class="hover:text-primary text-white">Blog</a></li>
+          <li><a href="#" class="hover:text-primary text-white">Support Us</a></li>
+          </div>
+        </ul>
+      </div>
     </div>
   </div>
 
