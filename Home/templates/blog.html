@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block Content %}
-<div class="bg-gray-100 text-gray-100 min-h-screen">
+<div class="bg-gray-100 text-gray-100">
   <!-- Hero Section -->
   <div
-    class="relative bg-gradient-to-r from-blue-800 to-purple-600 text-center py-20 px-4"
+    class="relative h-[70vh] bg-fixed bg-[linear-gradient(to_bottom,rgba(17,45,51,0.1),rgba(17,45,51,0.3),rgba(17,45,51,0.9)),url('../statics/img/blog.jpg')] bg-cover bg-center  text-center py-20 px-4"
   >
     <div class="container mx-auto">
       <h1 class="text-6xl font-extrabold text-white mb-6 animate-fade-in">
@@ -98,5 +98,6 @@
     </div>
   </div>
 </div>
+  </div>
 {% include './Sections/Footer.html' %}
 {% endblock Content %}
