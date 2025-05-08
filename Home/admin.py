@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Carousel,Blog,Mission,Speaker,Event,EventSchedule,Arts
+from .models import Carousel,Blog,Mission,Speaker,Event,EventSchedule,Arts,Team
 # Register your models here.
 admin.site.register(Carousel)
 # admin.site.register(Mission)
@@ -22,3 +22,4 @@ class EventAdmin(admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 admin.site.register(Speaker)
 admin.site.register(Arts)
+admin.site.register(Team)

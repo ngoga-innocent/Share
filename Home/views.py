@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Carousel,Blog,Mission,Event,Arts
+from .models import Carousel,Blog,Mission,Event,Arts,Team
 from django.views import View
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -18,8 +18,10 @@ def Home(request):
     return render(request, 'home.html',context)
 def AboutUs(request):
     missions=Mission.objects.all()
+    teams=Team.objects.all()
     context={
-        'missions':missions
+        'missions':missions,
+        'teams':teams
     }
     return render(request,'aboutus.html',context)
 class ContactUs(View):

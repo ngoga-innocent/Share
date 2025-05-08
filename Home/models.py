@@ -84,5 +84,14 @@ class Arts(models.Model):
         verbose_name_plural='Arts'
         ordering=['-created_at']
     
+class Team(models.Model):
+    profile=models.ImageField(upload_to='team_profile/')
+    name=models.CharField(max_length=255)
+    position=models.CharField(max_length=255)
+    arrangement=models.IntegerField(null=True,blank=True)
     
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering=['arrangement',]
     
