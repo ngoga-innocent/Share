@@ -94,4 +94,30 @@ class Team(models.Model):
         return self.name
     class Meta:
         ordering=['arrangement',]
+class OurImpact(models.Model):
+    image = models.ImageField(upload_to='OurImpact/')
+    name = models.CharField(max_length=255)
+    
+    slug = models.SlugField(unique=True, blank=True)
+    story_title=models.CharField(max_length=255,null=True,blank=True)
+    story = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            slug = base_slug
+            num = 1
+            while OurImpact.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{num}"
+                num += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name_plural = 'Our Impacts'
+        ordering = ['-created_at']
     

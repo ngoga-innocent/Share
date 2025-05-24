@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Carousel,Blog,Mission,Event,Arts,Team
+from .models import Carousel,Blog,Mission,Event,Arts,Team,OurImpact
 from django.views import View
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -8,12 +8,14 @@ from django.utils import timezone
 def Home(request):
     carousel = Carousel.objects.all()
     blogs = Blog.objects.all().order_by('-date')[:5]
+    impacts=OurImpact.objects.all()[:5]
     featured_blog = blogs[0] if blogs else None
     other_blogs = blogs[1:] if blogs else []
     context={
         'carousels': carousel,
         'featured_blog': featured_blog,
         'other_blogs': other_blogs,
+        'impacts':impacts
     }
     return render(request, 'home.html',context)
 def AboutUs(request):
@@ -64,4 +66,10 @@ class Art(View):
             'featured_arts':featured_arts,
             'all_arts':all_arts
         })
-    
+def impact_list(request):
+    impacts = OurImpact.objects.all()
+    return render(request, 'impacts/impact_list.html', {'impacts': impacts})
+
+def impact_detail(request, slug):
+    impact = get_object_or_404(OurImpact, slug=slug)
+    return render(request, 'impacts/impact_detail.html', {'impact': impact})

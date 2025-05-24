@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block Content %}
+
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+    
+    <!-- Left: Impact Image -->
+    <div class="w-full h-[300px] md:h-[400px] overflow-hidden rounded-lg shadow-md">
+     <img src="{{ impact.image.url }}" alt="{{ impact.name }}" class="w-full h-full object-contain">
+
+    </div>
+    
+    <!-- Right: Impact Story Content -->
+    <div class="flex flex-col justify-between space-y-6">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-[#204ED0] uppercase mb-2">
+          Story of {{ impact.name }}
+        </h2>
+        {% if impact.story_title %}
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">{{ impact.story_title }}</h3>
+        {% endif %}
+        <div class="text-gray-700 prose max-w-none">
+          {{ impact.story|safe }}
+        </div>
+      </div>
+
+      <div>
+        <a href="{% url 'impact_list' %}" class="inline-block mt-4 bg-[#EF9F3E] text-white px-4 py-2 rounded hover:bg-[#d4872d] transition">
+          ← Back to All Stories
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+{% include 'Sections/Footer.html' %}
+{% endblock Content %}

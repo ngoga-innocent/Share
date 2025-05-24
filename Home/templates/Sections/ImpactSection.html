@@ -1,0 +1,33 @@
+<div class="w-[90%] mx-auto flex flex-col items-center justify-center">
+    <div class=" grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    
+  {% for impact in impacts %}
+    <div class="flex flex-col bg-white shadow-md rounded-lg overflow-hidden h-full">
+      <a href="{% url 'impact_detail' impact.slug %}">
+        <div class="w-full h-[200px] overflow-hidden">
+          <img src="{{ impact.image.url }}" alt="{{ impact.name }}" class="w-full h-full object-cover">
+        </div>
+      </a>
+      <div class="flex flex-col flex-grow items-center justify-between p-4">
+        <div>
+          <div class="my-2">
+            <h3 class="text-lg font-semibold text-[#204ED0] text-center uppercase">
+            Story of {{ impact.name }}
+            </h3>
+            <p class="font-bold text-center text-sm mb-1 ">{{ impact.story_title }}</p>
+          </div>
+          <p class="text-sm text-[#455065]" style="font-size: 0.85rem !important; line-height: 1.5 !important;color: #455065 !important;">{{ impact.story|safe|truncatewords:30 }}</p>
+
+        </div>
+        <div class="mt-4 text-center">
+          <a href="{% url 'impact_detail' impact.slug %}" class="inline-block bg-[#EF9F3E] text-white px-4 py-2 rounded hover:bg-[#d4872d] transition">
+            Full Story
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  
+</div>
+<a href="{% url 'impact_list' %}" class=" px-8 py-2 my-6 rounded bg-[#EF9F3E] text-lg text-white hover:text-white">See All Stories →</a>
+</div>
