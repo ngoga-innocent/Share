@@ -18,14 +18,14 @@
                 <a href="{% url 'events' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'events' %} text-red-700 {% endif %}">Events</a>
             </li>
             <li>
-                <a href="{% url 'contactus' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'contactus' %} text-red-700 {% endif %}">Wellness</a>
+                <a href="{% url 'wellness' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'wellness' %} text-red-700 {% endif %}">Wellness</a>
             </li>
         </ul>
     </div>
     <!-- Navigation Section -->
-    <div class="md:w-[100%] flex-1 flex flex-col">
+    <div class="md:w-[100%] md:flex-1 flex flex-col">
         <!-- Hamburger Menu (Visible on Mobile) -->
-        <div class="md:hidden">
+        <div class="md:hidden flex flex-col">
             <button id="menu-toggle">
                 <i id="menu-icon" class="fa fa-bars text-red-700 text-3xl flex" aria-hidden="true"></i>
                 <i id="close-icon" class="hidden fa fa-times text-red-700 text-3xl" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
         </div>
         
         <!-- Navigation Links -->
-        <ul id="menu" class="flex flex-col gap-y-3 py-4 md:flex-row md:w-[100%]  flex-1 justify-center  gap-x-4 md:items-center md:gap-x-4 absolute md:static bg-white md:bg-transparent top-16 md:top-auto left-0 w-full  shadow md:shadow-none my-4">
+        <ul id="menu" class="md:flex flex-col gap-y-3 py-4 md:flex-row md:w-[100%]  flex-1 justify-center  gap-x-4 md:items-center md:gap-x-4 absolute md:static bg-white md:bg-transparent top-16 md:top-auto left-0 w-full  shadow md:shadow-none my-4">
             <div class="md:hidden flex flex-col items-center">
                 <li>
                     <a href="{% url 'homepage' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'homepage' %} text-red-700 {% endif %}">Home</a>
@@ -45,7 +45,7 @@
                     <a href="{% url 'events' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'events' %} text-red-700 {% endif %}">Events</a>
                 </li>
                 <li>
-                    <a href="{% url 'contactus' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'contactus' %} text-red-700 {% endif %}">Wellness</a>
+                    <a href="{% url 'wellness' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'wellness' %} text-red-700 {% endif %}">Wellness</a>
                 </li>
             </div>
             
@@ -70,7 +70,7 @@
                 <li>
                     <a href="{% url 'blog' %}" class="px-4 py-2 hover:text-red-700 {% if request.resolver_match.url_name == 'blog' %} text-red-700 {% endif %}">Blogs</a>
                 </li>
-                <li>
+                <li class="my-2 md:my-0">
                     <a href="{% url 'payment' %}" class="bg-accent px-4 py-2 rounded-full text-accent {% if request.resolver_match.url_name == 'payment' %}  bg-orange-600 {% else %} text-white {% endif %} ">Donate</a>
                 </li>
             </div>

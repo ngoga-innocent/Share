@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 {% block Content %}
-{% include './impactHero.html' %}
-<section class="max-w-7xl mx-auto px-4 py-10 text-[#455065]">
-  <h1 class="text-3xl md:text-4xl font-bold text-center text-[#204ED0] mb-8">Our Impact Stories</h1>
 
-  <div id="impact-stories{% extends 'base.html' %}
-{% block Content %}
 {% include './impactHero.html' %}
+
 <section class="max-w-7xl mx-auto px-4 py-10 text-[#455065]">
   <h1 class="text-3xl md:text-4xl font-bold text-center text-[#204ED0] mb-8">Our Impact Stories</h1>
 
@@ -42,41 +38,6 @@
       </div>
     {% empty %}
       <p class="text-center text-gray-500">No impact stories found.</p>
-    {% endfor %}
-  </div>
-</section>
-
-{% include 'Sections/Footer.html' %}
-{% endblock Content %}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {% for impact in impacts %}
-      <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col transition hover:shadow-xl duration-300">
-        
-        <!-- Image -->
-        <a href="{% url 'impact_detail' impact.slug %}">
-          <div class="h-52 overflow-hidden">
-            <img src="{{ impact.image.url }}" alt="{{ impact.name }}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-          </div>
-        </a>
-
-        <!-- Content -->
-        <div class="p-5 flex flex-col justify-between flex-grow">
-          <div>
-            <h3 class="text-xl font-semibold text-[#204ED0] uppercase mb-1">Story of {{ impact.name }}</h3>
-            {% if impact.story_title %}
-              <p class="font-medium text-gray-800 mb-2">{{ impact.story_title }}</p>
-            {% endif %}
-            <p class="text-[#455065] text-sm line-clamp-4" style="font-family: "Roboto", sans-serif;">{{ impact.story|safe|truncatewords:30 }}</p>
-          </div>
-
-          <!-- Button -->
-          <div class="mt-4">
-            <a href="{% url 'impact_detail' impact.slug %}" class="inline-block bg-[#EF9F3E] text-white px-4 py-2 rounded hover:bg-[#d4872d] transition">
-              Full Story
-            </a>
-          </div>
-        </div>
-        
-      </div>
     {% endfor %}
   </div>
 </section>

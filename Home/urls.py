@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home,AboutUs,ContactUs,BlogView,blog_detail_view,Event_View,Art,impact_detail,impact_list
+from .views import Home,AboutUs,ContactUs,BlogView,blog_detail_view,Event_View,Art,impact_detail,impact_list,Wellnes
 
 urlpatterns = [
    
@@ -13,5 +13,6 @@ urlpatterns = [
     path('arts',Art.as_view(),name='arts'),
    path('impacts/', impact_list, name='impact_list'),
     path('impacts/<slug:slug>/', impact_detail, name='impact_detail'),
+    path('wellness', Wellnes.as_view(), name='wellness'),
     #path('ckeditor/', include('ckeditor_uploader.urls')),
 ]

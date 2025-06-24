@@ -29,6 +29,9 @@ def AboutUs(request):
 class ContactUs(View):
     def get(self, request):
         return render(request, 'contact_us.html')
+class Wellnes(View):
+    def get(self, request):
+        return render(request, 'wellness.html')
 class BlogView(View):
     def get(self, request):
         blogs = Blog.objects.all().order_by('-date')

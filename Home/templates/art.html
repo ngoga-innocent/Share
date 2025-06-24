@@ -4,11 +4,11 @@
     class="flex flex-col md:flex-row w-[90%] h-[40vh] gap-x-5 mx-auto items-center justify-between"
   >
     <div class="flex flex-col flex-1">
-      <p class="text-[#141414] font-semibold text-6xl">Drive into</p>
-      <h1 class="text-[#141414] text-6xl ml-12">Creativity with Our</h1>
+      <p class="text-[#141414] font-semibold md:text-6xl text-2xl">Drive into</p>
+      <h1 class="text-[#141414] md:text-6xl text-2xl ml-12">Creativity with Our</h1>
       <h1
         style="font-family: 'Lavishly Yours', cursive"
-        class="text-[#EF9F3E] text-6xl self-end -mt-8"
+        class="text-[#EF9F3E] md:text-6xl self-end md:-mt-8 -mt-2"
       >
         gallery Collection
       </h1>
@@ -31,13 +31,13 @@
     {% if featured_arts %}
         {% for art in featured_arts %}
         <div 
-            class="flex flex-col group h-[40vh] items-center 
+            class="flex flex-col group h-[40vh] my-1 md:my-0 items-center 
             {% if forloop.counter <= 2 %}
-                transform rotate-[2deg]
+                transform md:rotate-[2deg]
             {% elif forloop.counter >= 4 %}
-                transform -rotate-[2deg]
+                transform md:-rotate-[2deg]
             {% elif forloop.counter == 3 %}
-                transform rotate-0 translate-y-10
+                transform rotate-0 md:translate-y-10
             {% endif %}">
             
             <div class="hidden group-hover:flex">
@@ -54,7 +54,7 @@
         <p>No Arts Available</p>
     {% endif %}
   </div>
-  <div class="w-[80%] mx-auto flex flex-col md:flex-row h-[40vh] items-center gap-x-10 justify-center">
+  <div class="w-[80%] mx-auto flex flex-col md:flex-row md:h-[40vh] items-center gap-x-10 justify-center">
     <div>
         <h1 class="text-[#141414] text-3xl">About The</h1>
         <p  style="font-family: 'Lavishly Yours', cursive"
